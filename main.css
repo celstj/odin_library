@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    font-style: bold;
+    font-size: 80px;
+    text-align: center;
+    padding-bottom: 20px;
+    background-color: aquamarine;
+}
+
+.container {
+    text-align: center;
+}
+
+.newBook {
+    width: 120px;
+    height: 50px;
+    border: solid green;
+    color: white;
+    background-color: green;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.newBook:hover {
+    cursor: pointer;
+    background-color: darkgreen;
+    border: solid darkgreen;
+}
+
+form {
+    margin: 20px;
+}
+
+.libraryGrid {
+    display:grid;
+    grid-template: 30px 30px 30px 30px 30px / 20% 20% 20% 20% 10%;
+    width: 100vw;
+    height: auto;
+    margin: 20px;
+    justify-content: center;
+    text-align: center;
+}
+
+.item {
+    border: 1px solid black;
+}
