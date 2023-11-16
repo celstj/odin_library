@@ -18,17 +18,21 @@
         <input type="text" id="author" name="author">
         <label for="pages">Pages: </label>
         <input type="number" id="pages" name="pages">
-        <label for="read">Read?: </label>
-        <input type="checkbox" id="read" name="read">
+        <label for="bstatus">Status: </label>
+        <select id="bstatus" name="bstatus">
+            <option value="read">Read</option>
+            <option value="reading">Reading</option>
+            <option value="unread">Unread</option>
+        </select>
         <input type="submit" form="form" value="Add Book" id="submit">
     </form>
 
     <div class="libraryGrid">
-        <div class="item title">Title</div>
+        <!-- <div class="item title">Title</div>
         <div class="item author">Author</div>
         <div class="item pages">Pages</div>
         <div class="item read">Read?</div>
-        <div class="item rmv"></div>
+        <div class="item rmv"></div> -->
     </div>
 
     <script src="main.js"></script>
