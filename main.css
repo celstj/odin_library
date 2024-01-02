@@ -15,7 +15,7 @@ header {
     text-align: center;
 }
 
-.newBook {
+/* .newBook {
     width: 120px;
     height: 50px;
     border: solid green;
@@ -30,7 +30,7 @@ header {
     cursor: pointer;
     background-color: darkgreen;
     border: solid darkgreen;
-}
+} */
 
 form {
     margin: 20px;
