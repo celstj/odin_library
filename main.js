@@ -28,7 +28,6 @@ function addBookToLibrary(e) {
     let newBook = new Book(title, author, pages, bstatus);
     
     myLibrary.push(newBook);
-    // console.log('check this: '+newBook.bstatus);
     setData();
     renderBooks();
     form.reset();
@@ -68,24 +67,38 @@ function createBook(item) {
     newPages.classList.add('pages');
     bookDiv.appendChild(newPages);
 
-    // change reading status on dropdown options
-    newStatusBtn.classList.add('bstatus');
-    bookDiv.appendChild(newStatusBtn);
-    if(item.bstatus === "read") {
+
+    const read = () => {
         newStatusBtn.textContent = 'Read';
         newStatusBtn.style.backgroundColor = 'green';
-    } else if(item.bstatus === "reading" ) {
+    }
+
+    const reading = () => {
         newStatusBtn.textContent = 'Reading';
         newStatusBtn.style.backgroundColor = 'yellow';
-    } else {
+    }
+
+    const unread = () => {
         newStatusBtn.textContent = 'Not Read';
         newStatusBtn.style.backgroundColor = 'red';
     }
 
+
+    // change reading status on dropdown options
+    newStatusBtn.classList.add('bstatus');
+    bookDiv.appendChild(newStatusBtn);
+    if(item.bstatus === "read") {
+        read();
+    } else if(item.bstatus === "reading" ) {
+        reading();
+    } else {
+        unread();
+    }
+
+    //append remove book button
     newRemoveBtn.textContent = 'Remove Book';
     newRemoveBtn.setAttribute('id', 'removeBtn');
     bookDiv.appendChild(newRemoveBtn);
-
     library.appendChild(bookDiv);
 
     // remove button function
@@ -97,19 +110,24 @@ function createBook(item) {
 
     // toggle status button
     newStatusBtn.addEventListener('click', () => {
-        if(item.bstatus === "read"){
-            item.bstatus === "reading";
-        }else if(item.bstatus === "reading") {
-            item.bstatus === "unread";
-        }else {
-            item.bstatus === "read";
-        }
-        console.log("whats this"+item.bstatus);
+
+            if(item.bstatus === "read"){
+                item.bstatus = "reading";
+                reading();
+            }else if(item.bstatus === "reading") {
+                item.bstatus = "unread";
+                unread();
+            }else {
+                item.bstatus = "read"
+                read;
+            }
+        // console.log("whats this1"+item.bstatus);
+        // console.log("whats this2"+myLibrary[i]);
         setData();
         renderBooks();
+
+console.log(myLibrary);
     });
-
-
 }
 
 function reset() {
@@ -129,14 +147,12 @@ function setData() {
 function restore() {
     if(!localStorage.myLibrary) {
         renderBooks();
-        // console.log('no books rendered');
     } else {
         let objects = localStorage.getItem("myLibrary");
         // get info from local storage to use in below loop to create DOM
         objects = JSON.parse(objects);
         myLibrary = objects;
         renderBooks();
-        // console.log('local storage books rendered');
     }
 }
 
